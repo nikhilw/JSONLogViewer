@@ -1,0 +1,12 @@
+{
+  "name": "JSONLogViewer",
+  "main": "html/index.html",
+  "dependencies": {
+    "node-tail": "0.0.4"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-zip": "^0.13.0",
+    "grunt-shell": "^0.7.0"
+  }
+}
