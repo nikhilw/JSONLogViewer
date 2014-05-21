@@ -2,11 +2,13 @@
   "name": "JSONLogViewer",
   "main": "html/index.html",
   "dependencies": {
-    "node-tail": "0.0.4"
+    "node-tail": "0.0.4",
+    "jquery": "^2.1.1"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-zip": "^0.13.0",
-    "grunt-shell": "^0.7.0"
+    "grunt-shell": "^0.7.0",
+    "jade": "^1.3.1"
   }
 }
