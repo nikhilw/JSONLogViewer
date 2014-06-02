@@ -1,0 +1,17 @@
+{
+    "levelColours": {
+        "info": "bg-primary",
+        "warn": "bg-warning",
+        "error": "bg-danger",
+        "debug": "bg-success",
+        "default": "bg-info"
+    },
+    "logFile": "",
+    "fileAttrs": {
+        "stackAttr": "stack",
+        "timeAttr": "timestamp",
+        "logLevelAttr": "level",
+        "msgAttr": "message"
+    },
+    "dateFormat": ""
+}

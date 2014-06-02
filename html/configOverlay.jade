@@ -1,0 +1,21 @@
+#logFileConfig.modal.fade(aria-hidden='true', aria-labelledby='myModalLabel', role='dialog', tabindex='-1')
+	.modal-dialog
+		.modal-content
+			.modal-header
+				button.close(aria-hidden='true', data-dismiss='modal', type='button') ×
+				h4#myModalLabel.modal-title Modal title
+			form.modal-body.form-group
+				label(for="logFile") Log file
+				-var currLogFile =  orch.getConfig("logFile")
+				input#logFile.form-control(name="logFile" value=currLogFile)
+				label(for="timeAttr") Time attribute
+				input#timeAttr.form-control(name="fileAttrs.timeAttr" value=fileAttrs.timeAttr placeholder="timestamp")
+				label(for="stackAttr") Stack attribute
+				input#stackAttr.form-control(name="fileAttrs.stackAttr" value=fileAttrs.stackAttr placeholder="stack")
+				label(for="msgAttr") Message attribute
+				input#msgAttr.form-control(name="fileAttrs.msgAttr" value=fileAttrs.msgAttr placeholder="message")
+				label(for="logLevelAttr") Log Level attribute
+				input#logLevelAttr.form-control(name="fileAttrs.logLevelAttr" value=fileAttrs.logLevelAttr placeholder="level")
+			.modal-footer
+				button.btn.btn-default(data-dismiss='modal', type='button') Close
+				button#saveLogConfig.btn.btn-primary(type='button') Save changes

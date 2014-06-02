@@ -2,8 +2,16 @@ node_modules/**
 *.nw
 *.log
 
+bower_components/**
+
 credits.html
 libffmpegsumo.so
 nw
 nw.pak
 nwsnapshot
+
+.settings/**
+.project
+
+*.*~
+*\.bkp

@@ -1,4 +1,20 @@
 .block
-	ul
-		each val, index in data
-			li= index + ': ' + val
+	.head
+		.timestamp
+			=appUtil.formatDate(new Date(data[fileAttrs.timeAttr]))
+		div(class=colours[data[fileAttrs.logLevelAttr]] + " level")
+			=data[fileAttrs.logLevelAttr]
+	.body
+		.message
+			=data[fileAttrs.msgAttr]
+		.params
+			each val, index in data
+				-if(!orch.isfileAttrParam(index)) {
+					div.param
+						=index + ': ' + val
+				-}
+		-if(data[fileAttrs.stackAttr]) {
+			.stack
+				!=data[fileAttrs.stackAttr].replace(/\n/g, "<br>")
+				//!=data[fileAttrs.stackAttr].replace(/\n/, "<div>").replace(/\n/g, "<br>")+ "</div>"
+		-}

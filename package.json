@@ -3,7 +3,8 @@
   "main": "html/index.html",
   "dependencies": {
     "node-tail": "0.0.4",
-    "jquery": "^2.1.1"
+    "jquery": "^2.1.1",
+    "dateformat": "^1.0.8-1.2.3"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

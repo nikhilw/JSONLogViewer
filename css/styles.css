@@ -1,0 +1,86 @@
+body {
+	background-color: #333;
+}
+
+body h1 {
+	color: #FFF;
+}
+
+.log-page {
+	width: 80%;
+	margin: auto 10%;
+}
+
+#container {
+
+}
+
+.block {
+/* 	padding: 5px; */
+/* 	border: 1px solid; */
+/* 	margin-bottom: 5px; */
+	border-left: 3px solid #EEEEEE;
+    margin: 10px 0;
+    padding: 10px;
+	background-color: #F4F8FA;
+/* 	border-color: #5BC0DE; */
+}
+
+.block * {
+	padding-left: 5px;
+}
+
+.head {
+	width: 100%;
+/* 	border-bottom: 1px solid; */
+	line-height: 25px;
+	overflow: auto;
+}
+
+.timestamp {
+	width: 50%;
+/* 	border-right: 1px solid; */
+	float: left;
+}
+
+.level {
+	width: 50%;
+	float: left;
+}
+
+.body {
+	width: 100%;
+}
+
+.message {
+	width: 100%;
+/* 	border-bottom: 1px solid; */
+	line-height: 25px;
+	color: #5BC0DE;
+	border-left: 3px solid #EEEEEE;
+	background-color: #F4F8FA;
+	border-color: #5BC0DE;
+}
+
+.params {
+	width: 100%;
+/* 	border-bottom: 1px solid; */
+	clear: both;
+	overflow: auto;
+}
+
+.param {
+	width: 50%;
+	float: left;
+	height: 25px;
+}
+
+.stack {
+	width: 100%;
+/* 	border-bottom: 1px solid; */
+/* 	line-height: 25px; */
+/* 	color: #5BC0DE; */
+	border-left: 3px solid #EEEEEE;
+	background-color: #FCF8F2;
+	border-color: #F0AD4E;
+}

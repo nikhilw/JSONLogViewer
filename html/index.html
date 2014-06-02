@@ -2,19 +2,20 @@
 <html>
   <head>
     <title>JSON LogViewer</title>
-    <script type="text/javascript" src="../js/main.js" ></script>
+	  <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+	  <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+	  <link rel="stylesheet" type="text/css" href="../css/styles.css">
+	  <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+	  <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	  <script type="text/javascript" src="../js/main.js" ></script>
   </head>
   <body>
-    <h1>Filename</h1>
-	  <!--<script type="text/javascript">
-	  	var jade = require("jade"),
-			fs = require("fs");
-		  
-		  fs.readFile("");
-		  var view = jade.compile()
-	  </script>-->
+  	<div class="log-page">
+	  <h1 id="fileName">Press Ctrl+O to open a log file. Press Ctrl+P for preferences.</h1>
 	  <div id="container">
 	  </div>
+	  
+	  <input id="open" type="file" style="display:none" accept="text/*"/>
+	</div>
   </body>
-	<!--https://github.com/rogerwang/node-webkit/wiki/about-node.js-server-side-script-in-node-webkit#template-engine-->
 </html>
