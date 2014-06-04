@@ -11,14 +11,16 @@ $("#open").on('change', function (e) {
 });
 
 $(document).on("click", "#saveLogConfig", function() {
-	orch.updateConfig($(".form-group").serializeArray());
+	var config = $(".form-group").serializeArray();
 //	console.log("yey");
 //	fileHandler.watchFile($(".form-group").find("#logFile").val(), document);
 	
 	window.jQuery("#logFileConfig").modal("hide");
 	setTimeout(function() {
 		window.jQuery("#logFileConfig").remove();
-	}, 500);	
+	}, 500);
+	
+	orch.updateConfig(config);
 });
 
 $(document).on('keyup', function (e) {
