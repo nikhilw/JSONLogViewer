@@ -35,11 +35,12 @@ function watchFile(file, doc) {
 	
 	docRef = doc;
 	
+	$("#container").html("");
+	
 	var i = 0;
 	tail.on("line", function(data) {
-		console.log("Got line: "+ i++);
+		//console.log("Got line: "+ i++);
 		//console.log(orch.getAppConfig("levelColours"));
-		
 		$("#container").append(
 			tmpl({
 				data:JSON.parse(data),
