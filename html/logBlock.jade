@@ -1,7 +1,9 @@
 .block
 	.head
+	- try {
+	- var dt = appUtil.formatDate(new Date(data[fileAttrs.timeAttr]));
 		.timestamp
-			=appUtil.formatDate(new Date(data[fileAttrs.timeAttr]))
+			=dt
 		div(class=colours[data[fileAttrs.logLevelAttr]] + " level")
 			=data[fileAttrs.logLevelAttr]
 	.body
@@ -18,3 +20,9 @@
 				!=data[fileAttrs.stackAttr].replace(/\n/g, "<br>")
 				//!=data[fileAttrs.stackAttr].replace(/\n/, "<div>").replace(/\n/g, "<br>")+ "</div>"
 		-}
+	- } catch(e) {
+	.body
+		.message.bg-primary
+			There was error parsing the log statement.
+			div=e
+	- }

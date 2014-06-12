@@ -8,9 +8,22 @@ var appUtil = require("../js/appUtil.js");
 
 orch.on("configUpdate", watchFile);
 
+var logBlockTemplate,
+	prefTemplate,
+	errorTemplate;
+
+
 function open(value) {
 	if (!fs.existsSync(file)) {
-		throw new Error("File does not exist: " + file);
+		errorTemplate = errorTemplate || jade.compile(fs.readFileSync("html/errorBlock.jade"));
+		$("#container").html(
+			errorTemplate({
+				error: {
+					message: "The file does not exist: " + file
+				}
+			})
+		);
+		return;
 	}
 	
 	file.updateConfig("logFile", file);
@@ -23,7 +36,15 @@ function watchFile(file, doc) {
 	file = file || orch.getConfig("logFile");
 	
 	if (!fs.existsSync(file)) {
-		throw new Error("File does not exist: " + file);
+		errorTemplate = errorTemplate || jade.compile(fs.readFileSync("html/errorBlock.jade"));
+		$("#container").html(
+			errorTemplate({
+				error: {
+					message: "The file does not exist: " + file
+				}
+			})
+		);
+		return;
 	}
 	
 	if (tail) {
@@ -31,7 +52,7 @@ function watchFile(file, doc) {
 	}
 	
 	tail = new Tail(file, "\n");
-	var tmpl = jade.compile(fs.readFileSync("html/logBlock.jade"));
+	logBlockTemplate = logBlockTemplate || jade.compile(fs.readFileSync("html/logBlock.jade"));
 	
 	docRef = doc;
 	
@@ -41,15 +62,20 @@ function watchFile(file, doc) {
 	tail.on("line", function(data) {
 		//console.log("Got line: "+ i++);
 		//console.log(orch.getAppConfig("levelColours"));
-		$("#container").append(
-			tmpl({
-				data:JSON.parse(data),
-				fileAttrs: orch.getConfig("fileAttrs"),
-				colours: orch.getConfig("levelColours"),
-				orch: orch,
-				appUtil: appUtil
-			})
-		);
+		try {
+			$("#container").append(
+				logBlockTemplate({
+					data:JSON.parse(data),
+					fileAttrs: orch.getConfig("fileAttrs"),
+					colours: orch.getConfig("levelColours"),
+					orch: orch,
+					appUtil: appUtil
+				})
+			);
+		} catch (e) {
+			$("#container").append("There was an error while parsing the log.");
+			$("#container").append(e);
+		}
 
 //		console.log(orch.getConfig("document"));
 		$("#fileName").text(file); //TODO update the filename as well..
@@ -62,16 +88,18 @@ function watchFile(file, doc) {
 
 
 function openPrefs() {
-	var jQuery = window.jQuery,
-	tmpl = jade.compile(fs.readFileSync("html/configOverlay.jade"));
+	var jQuery = window.jQuery;
+	prefTemplate = prefTemplate || jade.compile(fs.readFileSync("html/configOverlay.jade"));
 	
-	jQuery("body").append(tmpl({
-		data: {},
-		fileAttrs: orch.getConfig("fileAttrs"),
-		colours: orch.getConfig("levelColours"),
-		orch: orch,
-		appUtil: appUtil
-	}));
+	jQuery("body").append(
+		prefTemplate({
+			data: {},
+			fileAttrs: orch.getConfig("fileAttrs"),
+			colours: orch.getConfig("levelColours"),
+			orch: orch,
+			appUtil: appUtil
+		})
+	);
 	
 	jQuery("#logFileConfig").modal();
 	
